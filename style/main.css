@@ -1,5 +1,38 @@
 /* Variables */
-
+:root {
+  --moderate-cyan: hsl(176, 50%, 47%);
+  --dark-cyan: hsl(176, 72%, 28%);
+  --black: hsl(0, 0%, 0%);
+  --dark-gray: hsl(0, 0%, 48%);
+  --fs-100: 1rem;
+  --fs-200: 1.125rem;  
+  --fs-300: 1.25rem;
+  --fs-400: 1.75rem;
+  --fs-500: 2rem;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+  --navbar-fs: var(--fs-200);
+  --navbar-fw: var(--fw-500); 
+  --hero-fs: var(--fs-300);
+  --hero-fw: var(--fw-700);
+  --number-fs: var(--fs-500);
+  --number-fw: var(--fw-700);
+  --project-header-fs: var(--fs-200);
+  --project-header-fw: var(--fw-700);
+  --reward-header-fs: var(--fs-100);
+  --reward-header-fw: var(--fw-500);
+}
+@media (min-width:50em){
+  :root {
+    --navbar-fs: var(--fs-100);
+    --navbar-fw: var(--fw-400);
+    --hero-fs: var(--fs-400);
+    --project-header-fs: var(--fs-300);
+    --project-header-fs: var(--fs-300);
+    --reward-header-fs: var(--fs-200);
+  }
+}
 /* Css Reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -9,7 +42,6 @@
     padding: 0;
     font: inherit; 
 }
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
@@ -18,15 +50,11 @@ ol[role="list"] {
 html:focus-within {
   scroll-behavior: smooth;
 }
-html, body {
-height: 100%;
-}
 body {
 line-height: 1.5;
 text-rendering: optimizeSpeed;
 -webkit-font-smoothing: antialiased;
 }
-/* A elements that don't have a class get default styles */
 a:not([class]) {
     text-decoration-skip-ink: auto;
 }
@@ -43,7 +71,6 @@ overflow-wrap: break-word;
 #root, #__next {
 isolation: isolate;
 }
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
       scroll-behavior: auto;
@@ -61,15 +88,62 @@ isolation: isolate;
 /* Utilities */
 .visually-hidden {
   position: absolute;
-position: absolute !important;
-width: 1px !important;
-height: 1px !important;
-padding: 0 !important;
-margin: -1px !important;
-overflow: hidden !important;
-clip: rect(0,0,0,0) !important;
-white-space: nowrap !important;
-border: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
-
+.container {
+  --max-width: 1110px;
+  --hr-padding: 1.5rem;
+  width: min(var(--max-width), 100% - (var(--hr-padding)*2));
+  margin-inline: auto;
+}
+.main-container {
+  --max-width: 730px;
+  --hr-padding: 1.5rem;
+  width: min(var(--max-width), 100% - (var(--hr-padding)*2));
+  margin-inline: auto;
+}
+.text-clr {
+  color: var(--dark-gray);
+}
+.hero-text {
+  font-size: var(--hero-fs);
+  font-weight: var(--hero-fw);
+}
+.number-text {
+  font-size: var(--number-fs);
+  font-weight: var(--number-fw);
+}
+.project-header {
+  font-size: var(--project-header-fs);
+  font-weight: var(--project-header-fw);
+}
+.reward-header {
+  font-size: var(--reward-header-fs);
+  font-weight: var(--reward-header-fw);
+}
+.reward-price {
+  color: var(--moderate-cyan);
+}
+.default-button-design {
+  background-color: var(--moderate-cyan);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.default-button-design:hover, .default-button-design:active {
+  background-color: var(--dark-cyan);
+}
 /* General Styling */
+body {
+  font-family: 'Commissioner', sans-serif;
+  color: black;
+}
