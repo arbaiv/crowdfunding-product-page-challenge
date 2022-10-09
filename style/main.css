@@ -203,9 +203,8 @@ nav {
 }
 #navbar {
   position: absolute;
-  --max-width: 1110px;
   --hr-padding: 1.5rem;
-  width: min(var(--max-width), 100% - (var(--hr-padding)*2));
+  width: calc(100% - (var(--hr-padding)*2));
   background-color: #fff;
   border-radius: 0.5rem;
   transition: all 0.7s linear;
