@@ -107,8 +107,18 @@ isolation: isolate;
 .main-container {
   --max-width: 730px;
   --hr-padding: 1.5rem;
-  width: min(var(--max-width), 100% - (var(--hr-padding)*2));
+  width: min(var(--max-width), 100%);
   margin-inline: auto;
+}
+.main-container > * + * {
+  margin-top: 1.5rem;
+}
+.article-card {
+  width: 100%;
+  padding: 2.5rem 1.375rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .text-clr {
   color: var(--dark-gray);
@@ -129,7 +139,7 @@ isolation: isolate;
   font-size: var(--reward-header-fs);
   font-weight: var(--reward-header-fw);
 }
-.reward-price {
+.pledge-price {
   color: var(--moderate-cyan);
 }
 .default-button-design {
@@ -138,14 +148,28 @@ isolation: isolate;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+  border-radius: 1.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--fw-500);
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
 }
 .default-button-design:hover, .default-button-design:active {
   background-color: var(--dark-cyan);
+}
+@media (min-width:50em){
+  .article-card {
+    padding: 3rem;
+  }
 }
 /* General Styling */
 body {
   font-family: 'Commissioner', sans-serif;
   color: black;
+  background-color: #FCFCFC;
   overflow: hidden;
 }
 .header-sec {
@@ -202,20 +226,23 @@ nav {
   transform: rotate(-45deg) translate(-5.5px, -10px);
 }
 #navbar {
-  position: absolute;
+  position: fixed;
   --hr-padding: 1.5rem;
   width: calc(100% - (var(--hr-padding)*2));
   background-color: #fff;
   border-radius: 0.5rem;
+  transform: translate(0px, 40px);
   transition: all 0.7s linear;
+  z-index: 2;
 }
 [data-status="inactive"] {
   opacity: 0;
-  transform: translate(125%, 40px);
+  right: -100%;
 }
 [data-status="active"] {
   opacity: 1;
-  transform: translate(calc(-100% + 16px), 40px);
+  right: 0;
+  transform: translate(-24px, 40px) !important;
 }
 .navbar-list li {
   height: 70px;
@@ -247,6 +274,51 @@ nav {
   align-items: center;
   font-size: var(--navbar-fs);
   font-weight: var(--navbar-fw);
+}
+.article-one {
+  padding-top: 0px;
+  text-align: center;
+  margin-top: -56px;
+}
+.mastercraft-logo {
+  display: flex;
+  justify-content: center;
+  transform: translateY(-28px);
+}
+.mastercraft-description {
+  margin-top: 1rem;
+}
+.cta-sec {
+  display: flex;
+  flex: content;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.cta-btn {
+  width: 204px;
+  height: 56px;
+  margin-right: 1rem;
+}
+.bookmark-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 1.875rem;
+  cursor: pointer;
+}
+.bookmark-btn:hover, .bookmark-btn:active {
+  opacity: 0.7;
+}
+.bookmark-btn img {
+  width: 56px;
+  height: 56px;
+}
+.bookmark-text {
+  display: none;
 }
 @media (min-width:50em){
   .header-sec {
@@ -293,5 +365,16 @@ nav {
   [data-status="inactive"] {
     opacity: 1;
     transform: none;
+  }
+  .article-one {
+    margin-top: -92px;
+  }
+  .cta-sec {
+    margin-top: 2.625rem;
+  }
+  .bookmark-text {
+    display: inline;
+    margin: 0 1.35rem 0 1rem;
+    font-weight: var(--fw-700);
   }
 }
