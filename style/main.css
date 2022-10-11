@@ -21,7 +21,7 @@
   --project-header-fs: var(--fs-200);
   --project-header-fw: var(--fw-700);
   --reward-header-fs: var(--fs-100);
-  --reward-header-fw: var(--fw-500);
+  --reward-header-fw: var(--fw-700);
 }
 @media (min-width:50em){
   :root {
@@ -109,6 +109,7 @@ isolation: isolate;
   --hr-padding: 1.5rem;
   width: min(var(--max-width), 100%);
   margin-inline: auto;
+  margin-bottom: 76px;
 }
 .main-container > * + * {
   margin-top: 1.5rem;
@@ -130,12 +131,20 @@ isolation: isolate;
 .number-text {
   font-size: var(--number-fs);
   font-weight: var(--number-fw);
+  color: #000;
+  margin-right: 8px;
 }
 .project-header {
   font-size: var(--project-header-fs);
   font-weight: var(--project-header-fw);
 }
-.reward-header {
+.pledge-card {
+  width: 100%;
+  padding: 1.375rem;
+  border: 2px solid hsla(0, 0%, 48%, 0.1);
+  border-radius: 0.5rem;
+}
+.pledge-header {
   font-size: var(--reward-header-fs);
   font-weight: var(--reward-header-fw);
 }
@@ -160,9 +169,19 @@ isolation: isolate;
 .default-button-design:hover, .default-button-design:active {
   background-color: var(--dark-cyan);
 }
+.select-reward-btn {
+  width: 158px;
+  height: 48px;
+}
 @media (min-width:50em){
+  .main-container {
+    margin-bottom: 124px;
+  }
   .article-card {
     padding: 3rem;
+  }
+  .pledge-card {
+    padding: 2.5rem 2rem;
   }
 }
 /* General Styling */
@@ -170,7 +189,6 @@ body {
   font-family: 'Commissioner', sans-serif;
   color: black;
   background-color: #FCFCFC;
-  overflow: hidden;
 }
 .header-sec {
   height: 300px;
@@ -309,6 +327,7 @@ nav {
   border: none;
   border-radius: 1.875rem;
   cursor: pointer;
+  transition: opacity 0.2s ease-out;
 }
 .bookmark-btn:hover, .bookmark-btn:active {
   opacity: 0.7;
@@ -320,6 +339,81 @@ nav {
 .bookmark-text {
   display: none;
 }
+.article-two {
+  text-align: center;
+}
+.fund-details {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.fund-details div {
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.fund-details div p:nth-child(1) {
+  margin-bottom: 0.25rem;
+}
+.fund-details > * + * {
+  margin-top: 22px;
+}
+.line-design {
+  width: 80px;
+  height: 2px;
+}
+.line-color1 {
+  background-color: #7a7a7a32;
+}
+.line-color2 {
+  background-color: #7a7a7a32;
+}
+.fund-range-sec {
+  margin-top: 32px;
+}
+.range-slider {
+  height: 12px;
+  border-radius: 10px;
+}
+.under-sec {
+  width: 100%;
+  background-color: hsla(0, 0%, 48%, 0.1);
+}
+.upper-sec {
+  width: 89.91%;
+  background-color: var(--moderate-cyan);
+  transform: translateY(-12px);
+}
+.project-details p {
+  margin-top: 30px;
+}
+.pledge-card-sec {
+  margin-top: 40px;
+}
+.pledge-card-sec > * + * {
+  margin-top: 24px;
+}
+.pledge-header-sec {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pledge-details {
+  margin-top: 20px;
+}
+.pledge-cta-sec {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.pledge-cta-sec p {
+  display: flex;
+  align-items: center;
+}
+.select-reward-btn {
+  margin-top: 24px;
+}
+
 @media (min-width:50em){
   .header-sec {
     height: 400px;
@@ -376,5 +470,47 @@ nav {
     display: inline;
     margin: 0 1.35rem 0 1rem;
     font-weight: var(--fw-700);
+  }
+  .fund-details {
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .fund-details div {
+    text-align: left;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+  }
+  .fund-details > * + * {
+    margin-top: 0px;
+  }
+  .line-design {
+    width: 2px;
+    height: 80px;
+    margin: 0px 40px;
+  }
+  .fund-range-sec {
+    margin-top: 40px;
+  }
+  .range-slider {
+    height: 12px;
+    border-radius: 10px;
+  }
+  .pledge-header-sec {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pledge-details {
+    margin-top: 30px;
+  }
+  .pledge-cta-sec {
+    margin-top: 30px;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .select-reward-btn {
+    margin-top: 0px;
   }
 }
