@@ -8,7 +8,13 @@ const toggleNavbar = () => {
         menuButton.classList.remove("close-icon");
         menuButton.classList.add("hamburger-icon");
     }
-    navbar.dataset.status = (navbar.dataset.status === "inactive") ? "active":"inactive";
+    if (navbar.dataset.status === "inactive") {
+        navbar.dataset.status = "active";
+        document.body.classList.add("scroll-lock");    
+    } else {
+        navbar.dataset.status = "inactive";
+        document.body.classList.remove("scroll-lock");
+    }
 };
 menuButton.addEventListener("click", toggleNavbar);
 menuButton.addEventListener("keypress", (e) =>{
