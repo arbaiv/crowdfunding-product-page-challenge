@@ -55,10 +55,10 @@
                 </div>
                 <div class="cta-sec">
                     <div class="cta-btn-sec">
-                        <button class="default-button-design cta-btn" aria-label="Button to back this project">Back this project</button>
+                        <button id="back-project-btn" type="button" class="default-button-design cta-btn" aria-label="Back this project">Back this project</button>
                     </div>
                     <div class="bookmark-btn-sec">
-                        <button class="bookmark-btn" aria-label="Bookmark Button"><img src="images/icon-bookmark.svg" alt="Bookmark Icon"><span class="bookmark-text text-clr">Bookmark</span></button>
+                        <button type="button" aria-label="Bookmark" class="bookmark-btn" aria-label="Bookmark Button"><img src="images/icon-bookmark.svg" alt="Bookmark Icon"><span class="bookmark-text text-clr">Bookmark</span></button>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="pledge-cta-sec">
                             <p class="text-clr"><span class="number-text">101</span> left</p>
-                            <button class="default-button-design select-reward-btn">Select Reward</button>
+                            <button type="button" aria-label="Select Reward" class="default-button-design select-reward-btn">Select Reward</button>
                         </div>
                     </div>
                     <div class="pledge-card">
@@ -114,7 +114,7 @@
                         </div>
                         <div class="pledge-cta-sec">
                             <p class="text-clr"><span class="number-text">64</span> left</p>
-                            <button class="default-button-design select-reward-btn">Select Reward</button>
+                            <button type="button" aria-label="Select Reward" class="default-button-design select-reward-btn">Select Reward</button>
                         </div>
                     </div>
                     <div class="pledge-card">
@@ -127,13 +127,103 @@
                         </div>
                         <div class="pledge-cta-sec">
                             <p class="text-clr"><span class="number-text">0</span> left</p>
-                            <button class="default-button-design select-reward-btn">Select Reward</button>
+                            <button type="button" aria-label="Select Reward" class="default-button-design select-reward-btn">Select Reward</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <!-- Modal Content -->
+    <!-- 1. The dialog container -->
+    <div id="dialog-container" aria-labelledby="dialog-header" aria-hidden="true" class="dialog-container">
+    <!-- 2. The dialog overlay -->
+        <div data-a11y-dialog-hide class="dialog-overlay"></div>
+        <!-- 3. The actual dialog -->
+        <div class="dialog-content" role="document">
+            <!-- 6. Dialog content -->
+            <div class="back-project-sec">
+                <div class="back-project-header-sec">
+                    <div class="back-project-header">
+                        <!-- 5. The dialog title -->
+                        <h2 id="dialog-header" class="project-header">Back this project</h2>
+                        <!-- 4. The close button -->
+                        <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+                            <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M11.314 0l2.828 2.828L9.9 7.071l4.243 4.243-2.828 2.828L7.07 9.9l-4.243 4.243L0 11.314 4.242 7.07 0 2.828 2.828 0l4.243 4.242L11.314 0z" fill="#000" fill-rule="evenodd" opacity=".4"/></svg>
+                        </button>
+                    </div>
+                    <p class="back-project-description text-clr">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+                </div>
+                <div class="back-project-card-sec">
+                    <div class="reward-card">
+                        <div class="reward-header-sec">
+                            <div class="select-reward">
+                                <input type="radio" name="selectPledge" aria-labelledby="regular-pledge" class="pledge-radio-btn">
+                            </div>
+                            <div class="reward-header">
+                                <h3 id="regular-pledge" class="pledge-header">Pledge with no reward</h3>
+                            </div>
+                        </div>
+                        <div class="reward-description">
+                            <p class="text-clr">Choose to support us without a reward if you simply believe in our project. As a backer, you will be signer up to receive product updates via email.</p>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-header-sec">
+                            <div class="select-reward">
+                                <input type="radio" name="selectPledge" aria-labelledby="bamboo-stand" class="pledge-radio-btn">
+                            </div>
+                            <div class="reward-header">
+                                <h3 id="bamboo-stand" class="pledge-header">Bamboo Stand</h3>
+                                <p class="pledge-price">Pledge $25 or more</p>
+                            </div>
+                        </div>
+                        <div class="reward-description">
+                            <p class="text-clr">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
+                        </div>
+                        <div class="reward-left">
+                            <p class="text-clr"><span class="reward-left-number">101</span> left</p>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-header-sec">
+                            <div class="select-reward">
+                                <input type="radio" name="selectPledge" aria-labelledby="black-edition" class="pledge-radio-btn">
+                            </div>
+                            <div class="reward-header">
+                                <h3 id="black-edition" class="pledge-header">Black Edition Stand</h3>
+                                <p class="pledge-price">Pledge $75 or more</p>
+                            </div>
+                        </div>
+                        <div class="reward-description">
+                            <p class="text-clr">You get a Black Special Edition computer stand ans a personal thank you. You.ll be added to our Backer member list. Shipping is included.</p>
+                        </div>
+                        <div class="reward-left">
+                            <p class="text-clr"><span class="reward-left-number">64</span> left</p>
+                        </div>
+                    </div>
+                    <div class="reward-card">
+                        <div class="reward-header-sec">
+                            <div class="select-reward">
+                                <input type="radio" name="selectPledge" aria-labelledby="mahogany-special" class="pledge-radio-btn">
+                            </div>
+                            <div class="reward-header">
+                                <h3 id="mahogany-special" class="pledge-header">Mahogany Special edition</h3>
+                                <p class="pledge-price">Pledge $200 or more</p>
+                            </div>
+                        </div>
+                        <div class="reward-description">
+                            <p class="text-clr">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
+                        </div>
+                        <div class="reward-left">
+                            <p class="text-clr"><span class="reward-left-number">0</span> left</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="script/modal.js"></script>
     <script src="script/main.js"></script>
 </body>
 </html>
