@@ -98,6 +98,9 @@ isolation: isolate;
   white-space: nowrap !important;
   border: 0 !important;
 }
+.scroll-lock {
+  overflow: hidden;
+}
 .container {
   --max-width: 1110px;
   --hr-padding: 1.5rem;
@@ -277,9 +280,6 @@ nav {
   right: 0;
   transform: translate(-24px, 40px) !important;
 }
-.scroll-lock {
-  overflow: hidden;
-}
 .navbar-list {
   background-color: #fff;
   border-radius: 0.5rem;
@@ -447,6 +447,7 @@ nav {
 .dialog-container {
   z-index: 3;
   display: flex;
+  overflow-y: scroll;
 }
 .dialog-container[aria-hidden='true'] {
   display: none;
@@ -458,8 +459,8 @@ nav {
   margin: auto; 
   z-index: 2; 
   position: relative;
+  padding: 120px 0px;
 }
-
 .back-project-sec {
   --max-width: 730px;
   --hr-padding: 1.5rem;
@@ -491,9 +492,12 @@ nav {
 }
 .reward-card {
   width: 100%;
-  padding: 1.5rem;
   border: 2px solid hsla(0, 0%, 48%, 0.2);
   border-radius: 0.5rem;
+  transition: border 0.3s ease-out;
+}
+.reward-card-content-sec {
+  padding: 1.5rem;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -506,16 +510,50 @@ nav {
   display: flex;
   align-items: center;
 }
-.pledge-radio-btn {
+/* Start of Input custom design & animation */
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  padding: 4px;
-  border: 1px solid hsla(0, 0%, 48%, 0.2);
+  border: 1px solid hsla(0, 0%, 48%, 0.7);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
 }
-.pledge-radio-btn:hover {
+input[type="radio"]:hover {
   border: 1px solid var(--moderate-cyan);
 }
+input[type="radio"]::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 80ms transform ease-out;
+  box-shadow: inset 1em 1em var(--moderate-cyan);
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+.reward-card:has(input[type="radio"]:checked) {
+  border: 2px solid var(--moderate-cyan);
+}
+.pledge-header label {
+  transition: color 0.15s linear;
+}
+.select-reward:hover + .reward-header h3 label {
+  cursor: pointer;
+  color: var(--moderate-cyan);
+}
+.pledge-header:hover label {
+  cursor: pointer;
+  color: var(--moderate-cyan);
+}
+/* End of Input custom design & animation */
 .reward-header {
   display: flex;
   flex-flow: column nowrap;
@@ -532,6 +570,68 @@ nav {
   font-weight: var(--fw-700);
   color: #000;
   margin-right: 8px;
+}
+.pledge-sec {
+  border-top: 2px solid hsla(0, 0%, 48%, 0.2);
+  padding: 1.5rem;
+  display: none;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 0px;
+  overflow: hidden;
+}
+.reward-card:has(input[type="radio"]:checked) .pledge-sec {
+  display: flex;
+  height: auto;
+}
+.reward-card:has(input[type="radio"]:checked) .pledge-sec > * {
+  animation: slideDown 0.4s both ease-out;
+} 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.pledge-button-sec {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.pledge-price-btn, .continue-button {
+  width: 114px;
+  height: 48px;  
+}
+.pledge-price-btn {
+  border: 2px solid hsla(0, 0%, 48%, 0.2);
+  margin-right: 1rem;
+  border-radius: 1.5rem;
+  padding-left: 48px;
+  font-size: var(--fs-100);
+  font-weight: var(--fw-700);
+  background: url(../images/icon-dollar.svg) no-repeat 24px center;
+  outline-color: var(--moderate-cyan);
+  cursor: pointer;
+  transition: border 0.2s ease-out;
+}
+.pledge-price-btn:hover, .pledge-price-btn:active {
+  border: 2px solid var(--moderate-cyan);
+}
+
+/* Css for removing the scroll buttons in number input */
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 @media (min-width:50em){
@@ -656,7 +756,7 @@ nav {
     align-self: flex-end;
     margin-right: -1.5rem;
   }
-  .reward-card {
+  .reward-card-content-sec {
     padding: 1.875rem;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -685,5 +785,13 @@ nav {
     font-weight: var(--fw-700);
     color: #000;
     margin-right: 8px;
+  }
+  .pledge-sec {
+    padding: 1.5rem 1.875rem;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  .pledge-button-sec {
+    margin-top: 0px;
   }
 }
