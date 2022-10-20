@@ -47,7 +47,7 @@ ol[role="list"] {
   list-style: none;
 }
 /* Set core root defaults */
-html:focus-within {
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -231,7 +231,7 @@ nav {
   height: 3px;
   background-color: #fff;
   display: block;
-  transition: all 0.8s ease-out;
+  transition: all 0.4s ease-out;
   transform-origin: center;
 }
 .hamburger-icon .icon-bars > * + * {
@@ -257,7 +257,7 @@ nav {
   background-color: #fff;
   border-radius: 0.5rem;
   transform: translate(0px, 40px);
-  transition: all 0.7s linear;
+  transition: all 0.4s linear;
   z-index: 2;
   border-radius: 0.5rem;
 }
@@ -288,7 +288,7 @@ nav {
   height: 70px;
   padding: 0px 1.5rem;
   opacity: 0;
-  transition: all 0.8s ease-out;
+  transition: all 0.5s ease-out;
   transform: translateX(125%);
 }
 [data-status="active"] li {
@@ -340,6 +340,9 @@ nav {
   width: 204px;
   height: 56px;
   margin-right: 1rem;
+}
+.cta-btn:disabled {
+  opacity: 0.5;
 }
 .bookmark-btn {
   display: flex;
@@ -461,6 +464,28 @@ nav {
   position: relative;
   padding: 120px 0px;
 }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes zoom-in {
+  from {
+    transform: scale(0.94);
+  }
+}
+@keyframes slide-left-fade-out {
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+.dialog-overlay {
+  animation: fade-in 100ms both;
+}
+/* .dialog-content {
+  animation: fade-in 400ms both ease-out, zoom-in 400ms both ease-out;
+} */
 .back-project-sec {
   --max-width: 730px;
   --hr-padding: 1.5rem;
@@ -469,6 +494,12 @@ nav {
   background-color: white;
   padding: 1.875rem 1.5rem;
   border-radius: 0.5rem;
+}
+.back-project-sec[data-animate-status="open"] {
+  animation: fade-in 400ms both ease-out, zoom-in 400ms both ease-out;
+}
+.back-project-sec[data-animate-status="done"] {
+  animation: slide-left-fade-out 400ms forwards ease-out;
 }
 .back-project-header {
   display: flex;
@@ -545,11 +576,7 @@ input[type="radio"]:checked::before {
 .pledge-header label {
   transition: color 0.15s linear;
 }
-.select-reward:hover + .reward-header h3 label {
-  cursor: pointer;
-  color: var(--moderate-cyan);
-}
-.pledge-header:hover label {
+.select-reward:hover + .reward-header h3 label, .pledge-header:hover label {
   cursor: pointer;
   color: var(--moderate-cyan);
 }
@@ -577,12 +604,11 @@ input[type="radio"]:checked::before {
   display: none;
   flex-flow: column nowrap;
   align-items: center;
-  height: 0px;
   overflow: hidden;
 }
 .reward-card:has(input[type="radio"]:checked) .pledge-sec {
   display: flex;
-  height: auto;
+  animation: slideDown 0.4s both ease-out;
 }
 .reward-card:has(input[type="radio"]:checked) .pledge-sec > * {
   animation: slideDown 0.4s both ease-out;
@@ -590,11 +616,7 @@ input[type="radio"]:checked::before {
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(-10%);
   }
 }
 
@@ -623,7 +645,24 @@ input[type="radio"]:checked::before {
 .pledge-price-btn:hover, .pledge-price-btn:active {
   border: 2px solid var(--moderate-cyan);
 }
-
+/* Number input validity */
+.validation-error {
+  display: none;
+}
+input[type="number"]:invalid {
+  border: 2px solid #ee9999;
+}
+.pledge-sec:has(input[type="number"]:invalid) p {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.pledge-sec:has(input[type="number"]:invalid) .validation-error {
+  display: inline;
+  font-size: 0.785rem;
+  color: #f56262;
+  margin-top: 5px;
+}
 /* Css for removing the scroll buttons in number input */
 input[type="number"]::-webkit-outer-spin-button, 
 input[type="number"]::-webkit-inner-spin-button {
@@ -632,6 +671,70 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type="number"] {
     -moz-appearance: textfield;
+}
+/* Design for disabled rewards */
+button:disabled {
+  background-color: var(--dark-gray);
+} 
+button:disabled:hover {
+  background-color: var(--dark-gray);
+  cursor: not-allowed;
+}
+.pledge-card:has(button:disabled) {
+  opacity: 0.5;
+}
+input[type="radio"]:disabled {
+  cursor: not-allowed;
+}
+input[type="radio"]:disabled:hover {
+  border-color:hsla(0, 0%, 48%, 0.7);
+}
+.reward-card:has(input[type="radio"]:disabled) {
+  opacity: 0.5;
+}
+.reward-card:has(input[type="radio"]:disabled) .select-reward:hover + .reward-header h3 label, .reward-card:has(input[type="radio"]:disabled) .pledge-header:hover label {
+  cursor: default;
+  color: inherit;
+}
+
+/* Design for pledge done sec */
+.pledge-done-sec {
+  --max-width: 542px;
+  --hr-padding: 1.5rem;
+  width: min(var(--max-width), 100% - (var(--hr-padding)*2));
+  margin-inline: auto;
+  background-color: white;
+  padding: 2rem 1.5rem;
+  border-radius: 0.5rem;
+  flex-flow: column nowrap;
+  align-items: center;
+  display: none;
+}
+.pledge-done-sec[data-animate-status="open"] {
+  display: flex;
+  animation: fade-in 400ms both ease-out, zoom-in 400ms both ease-out;
+}
+.pledge-done-sec[data-animate-status="done"] {
+  display: flex;
+  animation: slide-left-fade-out 400ms forwards ease-out;
+}
+.pledge-done-sec > * + * {
+  margin-top: 1.5rem;
+}
+.support-header {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-700);
+}
+.pledge-done-sec p {
+  text-align: center;
+}
+.got-it-button-design {
+  width: 107px;
+  height: 48px;
+}
+.icon-check img {
+  width: 64px;
+  height: 64px;
 }
 
 @media (min-width:50em){
@@ -718,10 +821,6 @@ input[type="number"] {
   .fund-range-sec {
     margin-top: 40px;
   }
-  .range-slider {
-    height: 12px;
-    border-radius: 10px;
-  }
   .pledge-header-sec {
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -793,5 +892,18 @@ input[type="number"] {
   }
   .pledge-button-sec {
     margin-top: 0px;
+  }
+  .pledge-done-sec {
+    padding: 2.5rem;
+  }
+  .support-header {
+    font-size: 1.5rem;
+  }
+  .icon-check img {
+    width: 90px;
+    height: 90px;
+  }
+  .pledge-sec:has(input[type="number"]:invalid) p {
+    align-items: flex-start;
   }
 }
