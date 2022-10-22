@@ -35,8 +35,8 @@ const numberInputs = document.querySelectorAll('input[type="number"]');
 numberInputs.forEach((value) => {
     value.addEventListener("input", () => {
         let el = value;
-        if (el.value.length > el.maxLength) {
-            el.value = el.value.slice(0, el.maxLength);
+        if (el.value.length > el.dataset.maxlength) {
+            el.value = el.value.slice(0, el.dataset.maxlength);
         }
     });
 });
