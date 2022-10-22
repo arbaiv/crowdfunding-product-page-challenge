@@ -52,16 +52,30 @@ Users should be able to:
 
 ### What I learned
 
-I learned how to add linear-gradient to the whole body. Also, how to position an SVG out of the parent element without breaking the grid.
+- :has pseudo-class and how useful it is
+- a11y-dialog script to create accessible dialogs 
+- Dialog element in html
+- ::backdrop pseudo-element 
+- Animate elements with display:none property 
+- Customize and animate Radio Inputs
+- Hide scrollbar but keep their functionality
+- .toLocaleString() method
 
 ### Continued development
 
-I need to learn more about positioning SVG's and adding multiple animations. 
+After learning advance JS Es6 concepts, this project has helped me a lot to improve and implement what I have learned so far. Will be doing more challenging projects from now on.
 
 ### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Resource 1](https://www.youtube.com/watch?v=OGJvhpoE8b4&t=1s&ab_channel=KevinPowell) - :has pseudo-class and how useful it is
+- [Resource 2](https://a11y-dialog.netlify.app/) - a11y-dialog script to create accessible dialogs 
+- [Resource 3](https://www.youtube.com/watch?v=TAB_v6yBXIE&t=67s&ab_channel=KevinPowell) - Dialog element in html
+- [Resource 4](https://css-tricks.com/almanac/selectors/b/backdrop/) - ::backdrop pseudo-element
+- [Resource 5](https://moderncss.dev/pure-css-custom-styled-radio-buttons/) - Customize and animate Radio Inputs
+- [Resource 6](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp) - Hide arrows from number input
+- [Resource 7](https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp) - Hide scrollbars but keep functionality
+- [Resource 8](https://www.geeksforgeeks.org/how-to-create-a-gradient-shadow-using-css/) - How to create gradient shadow. I used this method to add the gradient shadow or backdrop behind the mobile navbar.
+- [Resource 9](https://stackoverflow.com/questions/18510845/maxlength-ignored-for-input-type-number-in-chrome) - How to put maxlength attribute in type inputs and add functionality to it.
+- [Resource 10](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript) - How to return a number with commas as thousands separators in JavaScript
 
 
 ## Author

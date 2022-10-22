@@ -2,6 +2,7 @@ import A11yDialog from "../modal-plugin/a11y-dialog.esm.js"
 const dialogContainer = document.getElementById('dialog-container');
 const mainDialog = new A11yDialog(dialogContainer);
 const openMainDialog = () => {
+    dialogContainer.lastElementChild.removeAttribute("animate-out");
     mainDialog.show();
     document.body.classList.add("scroll-lock");
 };
@@ -12,10 +13,18 @@ const closeMainDialog = () => {
 const backProjectBtn = document.getElementById("back-project-btn");
 const modalCloseBtn = document.getElementById("modal-close-btn");
 backProjectBtn.addEventListener("click", () => {
+    document.querySelectorAll('input[type="radio"]').forEach((value) => value.checked = false);
+    document.querySelectorAll('input[type="number"]').forEach((value) => {
+        let numberEl = value;
+        numberEl.value = value.defaultValue;
+    });
     openMainDialog();
 });
 modalCloseBtn.addEventListener("click", () => {
-    closeMainDialog();
+    dialogContainer.lastElementChild.setAttribute("animate-out", "");
+    setTimeout(() => {
+        closeMainDialog();
+    }, 200)
 });
 mainDialog.on("hide", () => document.body.classList.remove("scroll-lock"));
 // Animate between dialogs

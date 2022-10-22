@@ -464,6 +464,18 @@ nav {
   position: relative;
   padding: 120px 0px;
 }
+.dialog-content[animate-out] {
+  animation: zoom-out-fade-out 200ms forwards ease-out;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.dialog-container::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.dialog-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -472,6 +484,12 @@ nav {
 @keyframes zoom-in {
   from {
     transform: scale(0.94);
+  }
+}
+@keyframes zoom-out-fade-out {
+  to {
+    transform: scale(0.94);
+    opacity: 0;
   }
 }
 @keyframes slide-left-fade-out {
@@ -483,9 +501,6 @@ nav {
 .dialog-overlay {
   animation: fade-in 100ms both;
 }
-/* .dialog-content {
-  animation: fade-in 400ms both ease-out, zoom-in 400ms both ease-out;
-} */
 .back-project-sec {
   --max-width: 730px;
   --hr-padding: 1.5rem;
@@ -619,7 +634,6 @@ input[type="radio"]:checked::before {
     transform: translateY(-10%);
   }
 }
-
 .pledge-button-sec {
   display: flex;
   flex-flow: row nowrap;
