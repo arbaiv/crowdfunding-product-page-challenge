@@ -32,33 +32,3 @@ numberInputs.forEach((value) => {
         }
     });
 });
-
-
-function bookmark(title, url) {
-    if (window.sidebar) { 
-      // Firefox
-      window.sidebar.addPanel(title, url, '');
-    } 
-    else if (window.opera && window.print) 
-    { 
-      // Opera
-      var elem = document.createElement('a');
-      elem.setAttribute('href', url);
-      elem.setAttribute('title', title);
-      elem.setAttribute('rel', 'sidebar');
-      elem.click(); //this.title=document.title;
-    } 
-    else if (document.all) 
-    { 
-      // ie
-      window.external.AddFavorite(url, title);
-    }
-  }
-
-const bookmarkBtn = document.getElementById("bookmark-btn");
-bookmarkBtn.addEventListener("click", () => {
-    console.log(document.title, location.href);
-    bookmark(document.title, location.href);
-});
-
-/* oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" */

@@ -17,6 +17,7 @@ backProjectBtn.addEventListener("click", () => {
 modalCloseBtn.addEventListener("click", () => {
     closeMainDialog();
 });
+mainDialog.on("hide", () => document.body.classList.remove("scroll-lock"));
 // Animate between dialogs
 const backProjectSec = document.getElementById("back-project-sec");
 const pledgeDoneSec = document.getElementById("pledge-done-sec");
