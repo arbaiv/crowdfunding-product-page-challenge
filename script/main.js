@@ -22,6 +22,14 @@ menuButton.addEventListener("keypress", (e) =>{
         toggleNavbar();
     }
 });
+const navLinks = document.querySelectorAll('a[href*="#"]');
+navLinks.forEach((value) => {
+    value.addEventListener("click", () => {
+        if (navbar.dataset.status === "active") {
+            toggleNavbar();
+        }
+    });
+});
 
 const numberInputs = document.querySelectorAll('input[type="number"]');
 numberInputs.forEach((value) => {
